@@ -1,0 +1,113 @@
+"use client";
+import * as React from "react";
+import BackgroundElements from "./BackgroundElements";
+import QuoteText from "./QuoteText";
+
+/**
+ * HappinessQuote component - A decorative display of the quote "Happiness depends upon Ourselves"
+ * with stylized background elements
+ */
+const HappinessQuote: React.FC = () => {
+  return (
+    <section
+      className="overflow-hidden relative mx-auto my-0 w-full bg-red-200 h-[889px] max-w-[652px] max-md:origin-[top_center] max-md:scale-[0.8] max-sm:scale-50 max-sm:origin-[top_center]"
+      aria-label="Decorative quote display"
+    >
+      <BackgroundElements />
+
+      <QuoteText
+        position="absolute top-0 left-[245px]"
+      />
+
+      <QuoteText
+        position="absolute left-[237px] top-[300px]"
+      />
+
+      <QuoteText
+        position="absolute left-60 top-[599px]"
+      />
+    </section>
+  );
+};
+
+export default HappinessQuote;
+import React from "react";
+
+interface QuoteTextProps {
+  position: string;
+}
+
+/**
+ * QuoteText component - Displays the quote "Happiness depends upon Ourselves"
+ * with consistent styling and positioning based on props
+ */
+const QuoteText: React.FC<QuoteTextProps> = ({ position }) => {
+  return (
+    <article className={position}>
+      <h2 className="text-8xl font-bold text-black">Happiness</h2>
+      <h2 className="text-8xl font-bold text-black">depends</h2>
+      <h2 className="text-8xl font-bold text-black">upon</h2>
+      <h2 className="text-8xl font-bold text-black">Ourselves</h2>
+    </article>
+  );
+};
+
+export default QuoteText;
+import React from "react";
+
+/**
+ * BackgroundElements component - Contains all the decorative background elements
+ * including circles, squares, and lines
+ */
+const BackgroundElements: React.FC = () => {
+  return (
+    <>
+      {/* Background Circle */}
+      <div className="absolute bg-red-100 h-[657px] right-[-260px] rounded-[657px] top-[115px] w-[651px]" />
+
+      {/* Decorative Squares */}
+      <Square className="absolute bg-red-400 h-[135px] left-[307px] shadow-[-6px_6px_4px_rgba(0,0,0,0.25)] top-[49px] w-[135px]" />
+      <Square className="absolute bg-red-400 h-[135px] left-[173px] shadow-[-6px_6px_4px_rgba(0,0,0,0.25)] top-[339px] w-[135px]" />
+      <Square className="absolute bg-red-400 h-[135px] left-[445px] shadow-[-6px_6px_4px_rgba(0,0,0,0.25)] top-[707px] w-[135px]" />
+
+      {/* Decorative Lines */}
+      <Line className="absolute w-80 h-2.5 bg-red-400 left-[-13px] shadow-[-6px_6px_4px_rgba(0,0,0,0.25)] top-[117px]" />
+      <Line className="absolute w-80 h-2.5 bg-red-400 left-[-147px] shadow-[-6px_6px_4px_rgba(0,0,0,0.25)] top-[402px]" />
+      <Line className="absolute w-80 h-2.5 bg-red-400 left-[578px] shadow-[-6px_6px_4px_rgba(0,0,0,0.25)] top-[775px]" />
+
+      {/* SVG Circles */}
+      <div>
+        <div
+          dangerouslySetInnerHTML={{
+            __html:
+              '<svg width="261" height="657" viewBox="0 0 261 657" fill="none" xmlns="http://www.w3.org/2000/svg" class="circle1" style="position: absolute; width: 651px; height: 657px; right: -260px; top: 115px"> <ellipse cx="325.5" cy="328.5" rx="325.5" ry="328.5" fill="#FFDFDF"></ellipse> </svg>',
+          }}
+        />
+      </div>
+      <div>
+        <div
+          dangerouslySetInnerHTML={{
+            __html:
+              '<svg width="264" height="256" viewBox="0 0 264 256" fill="none" xmlns="http://www.w3.org/2000/svg" class="circle2" style="position: absolute; width: 334px; height: 334px; left: -70px; top: 633px"> <circle cx="97" cy="167" r="167" fill="#FFDFDF"></circle> </svg>',
+          }}
+        />
+      </div>
+    </>
+  );
+};
+
+// Square component for decorative squares
+interface ShapeProps {
+  className: string;
+}
+
+const Square: React.FC<ShapeProps> = ({ className }) => {
+  return <div className={className} role="presentation" />;
+};
+
+// Line component for decorative lines
+const Line: React.FC<ShapeProps> = ({ className }) => {
+  return <div className={className} role="presentation" />;
+};
+
+export default BackgroundElements;
